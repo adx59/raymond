@@ -3,10 +3,10 @@ from discord.ext import commands
 import discord
 
 class Idfk(object):
-    @commands.command(name="communism")
+    @commands.command(name="communism", hidden=True)
     async def _communism(self, ctx):
         """Communism lol"""
-        await ctx.send(":poop:")
+        await ctx.send("is garbage xd")
 
     @commands.command(name="ocket_racoon_is_so_fucking_hot", hidden=True)
     async def _rocket(self, ctx):

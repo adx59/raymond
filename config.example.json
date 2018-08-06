@@ -1,6 +1,9 @@
 {
     "token": "no",
+    "prefix": "r",
     "cogs": [
-        "cogs.utility" 
+        "cogs.utility",
+        "cogs.dev",
+        "cogs.idfk" 
     ]
 }

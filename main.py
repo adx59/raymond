@@ -8,7 +8,7 @@ import discord
 class Raymond(commands.Bot):
     def __init__(self):
         super().__init__(
-            command_prefix="r",
+            command_prefix="",
             description="Adam's utility bot."
         )
 
@@ -19,6 +19,9 @@ class Raymond(commands.Bot):
         self.logger = logging.getLogger("bot")
         
         self.config = json.loads(open("config.json").read())
+
+    async def get_prefix(self, msg):
+        return self.config["prefix"]
 
     async def on_ready(self):
         self.logger.info("Bot is ready!")
