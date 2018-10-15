@@ -15,10 +15,14 @@ class Utility(object):
         """Translates some text to English.
         
         God has been dead for a very long time."""
-        translated = self.translator.translate(text, dest="en").text
+        translated = self.translator.translate(text, dest="en")
+
+        emb = discord.Embed(title=f":white_check_mark: Translated! [{translated.origin} -> en]", color=0xf49e42)
+        emb.add_field(name="Original", value=f"```{text}```")
+        emb.add_field(name="Translated", value=f"```{translated.text}")
+
         await ctx.send(
-            (f"**Translated!**\n__Input Text__:\n```{text}```\n__Output Text__:\n"
-            f"```{translated}```")
+            embed=emb
         )
 
     @commands.command(name="translate", aliases=["tr"])
