@@ -18,8 +18,8 @@ class Utility(object):
         translated = self.translator.translate(text, dest="en")
 
         emb = discord.Embed(title=f":white_check_mark: Translated! [{translated.src} -> en]", color=0xf49e42)
-        emb.add_field(name="Original", value=f"```{text}```", inline=True)
-        emb.add_field(name="Translated", value=f"```{translated.text}```", inline=True)
+        emb.add_field(name="Original", value=f"```{text}```", inline=False)
+        emb.add_field(name="Translated", value=f"```{translated.text}```", inline=False)
 
         await ctx.send(
             embed=emb
@@ -33,8 +33,8 @@ class Utility(object):
         translated = self.translator.translate(text, dest=dest_lang).text
 
         emb = discord.Embed(title=f":white_check_mark: Translated! [{translated.src} -> {translated.dest}]", color=0xf49e42)
-        emb.add_field(name="Original", value=f"```{text}```", inline=True)
-        emb.add_field(name="Translated", value=f"```{translated.text}```", inline=True)
+        emb.add_field(name="Original", value=f"```{text}```", inline=False)
+        emb.add_field(name="Translated", value=f"```{translated.text}```", inline=False)
 
         await ctx.send(
             embed=emb
