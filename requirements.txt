@@ -1,2 +1,2 @@
-googletrans
+git+https://github.com/BoseCorp/py-googletrans.git
 PyDictionary

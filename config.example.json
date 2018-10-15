@@ -5,5 +5,9 @@
         "cogs.utility",
         "cogs.dev",
         "cogs.idfk" 
+    ],
+    "owners": [
+        123,
+        123
     ]
 }

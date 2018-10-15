@@ -28,7 +28,7 @@ class Raymond(commands.Bot):
         await self.change_presence(activity=discord.Game(name="with linter errors"))
 
     async def on_message(self, msg):
-        if msg.author.id != self.config["ownerID"]:  # ignore everyone else
+        if msg.author.id not in self.config["owners"]:  # ignore everyone else
             return 
 
         await self.process_commands(msg)
