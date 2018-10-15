@@ -17,9 +17,9 @@ class Utility(object):
         God has been dead for a very long time."""
         translated = self.translator.translate(text, dest="en")
 
-        emb = discord.Embed(title=f":white_check_mark: Translated! [{translated.origin} -> en]", color=0xf49e42)
-        emb.add_field(name="Original", value=f"```{text}```")
-        emb.add_field(name="Translated", value=f"```{translated.text}")
+        emb = discord.Embed(title=f":white_check_mark: Translated! [{translated.src} -> en]", color=0xf49e42)
+        emb.add_field(name="Original", value=f"```{text}```", inline=True)
+        emb.add_field(name="Translated", value=f"```{translated.text}```", inline=True)
 
         await ctx.send(
             embed=emb
@@ -31,9 +31,13 @@ class Utility(object):
         
         Karl Marx is an idiot, and so are you!"""
         translated = self.translator.translate(text, dest=dest_lang).text
+
+        emb = discord.Embed(title=f":white_check_mark: Translated! [{translated.src} -> {translated.dest}]", color=0xf49e42)
+        emb.add_field(name="Original", value=f"```{text}```", inline=True)
+        emb.add_field(name="Translated", value=f"```{translated.text}```", inline=True)
+
         await ctx.send(
-            (f"**Translated!**\n__Input Text__:\n```{text}```\n__Output Text__:\n"
-            f"```{translated}```")
+            embed=emb
         )
 
     @commands.command(name="define", aliases=["def"])
