@@ -2,7 +2,7 @@
 from discord.ext import commands
 import discord
 
-class Idfk(object):
+class Idfk(commands.Cog):
     @commands.command(name="communism", hidden=True)
     async def _communism(self, ctx):
         """Communism lol"""

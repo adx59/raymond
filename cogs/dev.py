@@ -7,7 +7,7 @@ import traceback
 from discord.ext import commands
 import discord
 
-class Dev(object):
+class Dev(commands.Cog):
     @commands.command(name="reload", aliases=["r"])
     async def _reload(self, ctx, *, cog: str):
         """Reloads a cog.

@@ -19,6 +19,7 @@ class Raymond(commands.Bot):
         self.logger = logging.getLogger("bot")
         
         self.config = json.loads(open("config.json").read())
+        self.BChandler = None
 
     async def get_prefix(self, msg):
         return self.config["prefix"]
@@ -28,6 +29,7 @@ class Raymond(commands.Bot):
         await self.change_presence(activity=discord.Game(name="with linter errors"))
 
     async def on_message(self, msg):
+        await self.BChandler.handle_incoming(msg)
         if msg.author.id not in self.config["owners"]:  # ignore everyone else
             return 
 

@@ -5,7 +5,7 @@ import PyDictionary
 from discord.ext import commands
 import discord
 
-class Utility(object):
+class Utility(commands.Cog):
     def __init__(self):
         self.translator = googletrans.Translator()
         self.dictionary = PyDictionary.PyDictionary()
