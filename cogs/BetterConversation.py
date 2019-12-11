@@ -19,7 +19,7 @@ class BetterConvo (object):
             return (1, f'> {content}\ntry saying something productive')
 
         elif len(arr_content) < 3 and ('sorry' in content.lower()):
-            return (1, f'> {content}\nbro. NEVER APOLOGIZE. (to anyone in this server, at least). '+\
+            return (0, f'> {content}\nbro. NEVER APOLOGIZE. (to anyone in this server, at least). '+\
                 'STAND UP FOR YOURSELF BRO. If someone\'s being a dick to you, DON\'T APOLOGIZE.'+\
                     ' If it is genuinely your problem, then be better. Don\'t be sorry.')
         
