@@ -23,6 +23,21 @@ class BetterConvo (object):
                 'STAND UP FOR YOURSELF BRO. If someone\'s being a dick to you, DON\'T APOLOGIZE.'+\
                     ' If it is genuinely your problem, then be better. Don\'t be sorry.')
 
+        elif 'bloody stream' in content.lower():
+            return (0, 'Shijima no soko kara mezameru sono hashiratachi toki wo koe\n \
+Shinku no chishio ga tachiagaru yuuki wo hikiawaseru\n \
+\
+Uketsugu ai wo sadame to yobu nara\n \
+Hohoemu me de tsugi no te wo\n \
+\
+Yami wo azamuite setsuna wo kawashite\n \
+Yaiba surinuke yatsura no suki wo tsuke\n \
+Tsuranuita omoi ga mirai wo hiraku\n \
+Like a bloody storm, atsuku like a bloody stone\n \
+Ketsumyaku ni kizamareta innen ni\n \
+Ukiagaru kienai hokori no kizuna nigirishimete\n \
+')
+
         # lmgtfy
 
         lmgtfy_search_phrases = ['what\'s', 'what’s', 'what is', 'whats']
