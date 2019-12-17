@@ -32,7 +32,7 @@ class BetterConvo (object):
         return (0, False)
 
     async def handle_incoming(self, message: discord.Message):
-        if message.author.id == self.bot.config['bcTarget']:
+        if message.author.id in self.bot.config['bcTarget']:
             result = self.filter(message.content)
 
             if not result[1]:
