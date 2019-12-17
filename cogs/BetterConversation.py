@@ -24,11 +24,15 @@ class BetterConvo (object):
                     ' If it is genuinely your problem, then be better. Don\'t be sorry.')
 
         elif 'bloody stream' in content.lower():
-            return (0, 'Shijima no soko kara mezameru sono hashiratachi toki wo koe\n \
-Shinku no chishio ga tachiagaru yuuki wo hikiawaseru\n \
+            return (
+                0,
+'https://www.youtube.com/watch?v=ndRVcGbJP7Y\n\n \
+\
+Shijima no soko kara mezameru sono hashiratachi toki wo koe\n \
+Shinku no chishio ga tachiagaru yuuki wo hikiawaseru\n\n \
 \
 Uketsugu ai wo sadame to yobu nara\n \
-Hohoemu me de tsugi no te wo\n \
+Hohoemu me de tsugi no te wo\n\n \
 \
 Yami wo azamuite setsuna wo kawashite\n \
 Yaiba surinuke yatsura no suki wo tsuke\n \
