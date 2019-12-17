@@ -22,12 +22,18 @@ class BetterConvo (object):
             return (0, f'> {content}\nbro. NEVER APOLOGIZE. (to anyone in this server, at least). '+\
                 'STAND UP FOR YOURSELF BRO. If someone\'s being a dick to you, DON\'T APOLOGIZE.'+\
                     ' If it is genuinely your problem, then be better. Don\'t be sorry.')
-        
-        elif len(arr_content) > 1 and ('what’s' in arr_content[0].lower() or 'what\'s' in arr_content[0].lower()):
-            urlparams = {'q': ' '.join(arr_content[1:])}
-            encoded = urllib.parse.urlencode(urlparams)
 
-            return (0, f'> {content}\nhttps://lmgtfy.com/?{encoded}')
+        # lmgtfy
+
+        lmgtfy_search_phrases = ['what\'s', 'what’s', 'what is', 'whats']
+        
+        for phrase in lmgtfy_search_phrases:
+            if phrase in content:
+                search = content.replace(phrase, '')
+                urlparams = {'q': search}
+                encoded = urllib.parse.urlencode(urlparams)
+
+                return (0, f'> {content}\nhttps://lmgtfy.com/?{encoded}')
 
         return (0, False)
 
