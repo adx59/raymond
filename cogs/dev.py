@@ -147,5 +147,11 @@ class Dev(commands.Cog):
             sys.stdout = sys.__stdout__
             repl.write_no_strip(">>> ")
 
+    @commands.command(name='update')
+    async def _update(self, ctx):
+        """Invokes a pull & restarts the bot"""
+        await self._pull(ctx)
+        await self._restart(ctx)
+
 def setup(bot):
     bot.add_cog(Dev())
