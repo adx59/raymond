@@ -30,7 +30,7 @@ class Utility(commands.Cog):
         """Translates some text to any language.
         
         Karl Marx is an idiot, and so are you!"""
-        translated = self.translator.translate(text, dest=dest_lang).text
+        translated = self.translator.translate(text, dest=dest_lang)
 
         emb = discord.Embed(title=f":white_check_mark: Translated! [{translated.src} -> {translated.dest}]", color=0xf49e42)
         emb.add_field(name="Original", value=f"```{text}```", inline=False)
@@ -43,7 +43,7 @@ class Utility(commands.Cog):
     @commands.command(name="define", aliases=["def"])
     async def _define(self, ctx, *, term: str):
         """Defines a word."""
-        formatted = f"**Definition of `{term}`**\n"
+        formatted = f"**Definition of `{term}`...**\n"
 
         async with ctx.typing():
             definition = self.dictionary.meaning(term)
@@ -53,9 +53,13 @@ class Utility(commands.Cog):
 
         for t in definition:
             formatted += f"{t}:\n```css\n"
+            if not definition[t]:
+                formatted += f"No definition found for this part of speech." 
             for subdef in definition[t]:
-                formatted += f"- {subdef}"
+                formatted += f"- ...{subdef}\n"
             formatted += "\n```\n"  
+
+        print(formatted)
 
         await ctx.send(formatted)
     

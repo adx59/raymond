@@ -30,8 +30,6 @@ class Raymond(commands.Bot):
 
     async def on_message(self, msg):
         await self.BChandler.handle_incoming(msg)
-        if msg.author.id not in self.config["owners"]:  # ignore everyone else
-            return 
 
         await self.process_commands(msg)
 
