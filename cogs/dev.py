@@ -7,8 +7,11 @@ import traceback
 from discord.ext import commands
 import discord
 
+from cogs.checks import is_dev
+
 class Dev(commands.Cog):
-    @commands.command(name="reload", aliases=["r"])
+    @commands.command(name="reload", aliases=["eload"])
+    @is_dev()
     async def _reload(self, ctx, *, cog: str):
         """Reloads a cog.
         
@@ -22,6 +25,7 @@ class Dev(commands.Cog):
             await ctx.send(f":ok_hand: Reloaded cog `{cog}`.")
 
     @commands.command(name="pull", aliases=["pu"])
+    @is_dev()
     async def _pull(self, ctx):
         """Pulls from git.
         
@@ -42,6 +46,7 @@ class Dev(commands.Cog):
         ))
 
     @commands.command(name="bash", aliases=["cmd"])
+    @is_dev()
     async def _bash(self, ctx, *, command: str):
         """Executes a command."""
         cmd_process = subprocess.run(
@@ -62,12 +67,14 @@ class Dev(commands.Cog):
         ))
 
     @commands.command(name="restart", aliases=["reboot"])
+    @is_dev()
     async def _restart(self, ctx):
         """Restarts the bot."""
         await ctx.send(":arrows_counterclockwise: Rebooting...")
         os.execl(sys.executable, sys.executable, * sys.argv)
 
     @commands.command(name="eval", aliases=["debug"])
+    @is_dev()
     async def _eval(self, ctx, *, code: str):
         """Evaluates code."""
         env = {
@@ -92,6 +99,7 @@ class Dev(commands.Cog):
                 await ctx.send(f":white_check_mark: Evaluated. Result:```{res}```")
 
     @commands.command(name="repl", aliases=["idle"])
+    @is_dev()
     async def _repl(self, ctx):
         """Starts an REPL."""
         class Repl(object):
@@ -146,12 +154,6 @@ class Dev(commands.Cog):
                 repl.write(''.join(traceback.format_exception(type(e), e, e.__traceback__)))
             sys.stdout = sys.__stdout__
             repl.write_no_strip(">>> ")
-
-    @commands.command(name='update')
-    async def _update(self, ctx):
-        """Invokes a pull & restarts the bot"""
-        await self._pull(ctx)
-        await self._restart(ctx)
 
 def setup(bot):
     bot.add_cog(Dev())
