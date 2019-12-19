@@ -42,12 +42,6 @@ class Raymond(commands.Bot):
         await ctx.send(f":warning: **Error:**```{err}```")
         self.logger.exception(err)
 
-    # lazy as fuck so i'll just tack the check onto the bot object
-    def is_dev(self):
-        def predicate(ctx):
-            return ctx.author.id in ctx.bot.config.owners
-        return commands.check(predicate)
-
     def run(self):
         token = self.config["token"]
         cogs = self.config["cogs"]
