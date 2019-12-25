@@ -11,3 +11,9 @@ def is_mod():
         return ctx.author.id in ctx.bot.config['owners'] \
             or ctx.author.guild_permissions.administrator
     return commands.check(predicate)
+
+def is_server_owner():
+    def predicate(ctx):
+        return ctx.author.id == ctx.guild.owner_id
+
+    return commands.check(predicate)

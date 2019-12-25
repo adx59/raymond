@@ -2,11 +2,15 @@
 from discord.ext import commands
 import discord
 
+from cogs.checks import is_mod, is_server_owner
+
 class Mod(commands.Cog):
     def __init__(self):
         pass
 
-    async def purge(self, ctx, limit: int, *, specific_user=None):
+    @is_server_owner()
+    @commands.command(name='purge')
+    async def _purge(self, ctx, limit: int, *, specific_user:discord.Member=None):
         """Purges a channel.
         
         If you wish to target one user's messages, **mention** them."""
@@ -14,7 +18,7 @@ class Mod(commands.Cog):
             if not specific_user:
                 return True
             
-            return m.author == specific_user
+            return m.author.id == specific_user.id
         
         await ctx.channel.purge(limit=limit, check=check)
 
