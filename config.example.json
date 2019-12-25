@@ -1,0 +1,16 @@
+{
+    "token": "no",
+    "prefix": "r",
+    "cogs": [
+        "cogs.utility",
+        "cogs.dev",
+        "cogs.idfk",
+        "cogs.BetterConversation"
+    ],
+    "owners": [
+        0
+    ],
+    "bcTarget": [ 
+        0 
+    ]
+}
