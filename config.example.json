@@ -5,7 +5,8 @@
         "cogs.utility",
         "cogs.dev",
         "cogs.idfk",
-        "cogs.BetterConversation"
+        "cogs.BetterConversation",
+        "cogs.mod"
     ],
     "owners": [
         0
