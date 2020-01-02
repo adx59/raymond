@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.6
 import json
 import logging
+import traceback
 
 from discord.ext import commands
 import discord
@@ -37,8 +38,17 @@ class Raymond(commands.Bot):
         if isinstance(err, commands.errors.CommandNotFound):
             return
 
-        await ctx.send(f":warning: **Error:**```{err}```")
-        self.logger.exception(err)
+        if isinstance(err, commands.CommandInvokeError):
+            fmt = traceback.format_exception(type(err.original), err.original,
+                                             err.original.__traceback__, chain=False)
+            fmt = '\n'.join(fmt)
+        else:
+            fmt = traceback.format_exception(type(err), err,
+                                             err.__traceback__, chain=False)
+            fmt = '\n'.join(fmt)
+
+        await ctx.send(f":warning: **Error:**```{fmt}```")
+        self.logger.exception(fmt)
 
     def run(self):
         token = self.config["token"]
