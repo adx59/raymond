@@ -45,5 +45,14 @@ class Mod(commands.Cog):
 
         await ctx.send(':white_check_mark:')
 
+    @is_mod()
+    @commands.command(name='unmute')
+    async def _unmute(self, ctx, *, target:discord.Member):
+        '''Unmutes a user.'''
+        mr = next((r for r in ctx.guild.roles if r.name == 'raymond mute'), None)
+
+        await target.remove_roles(mr)
+        await ctx.send(':ballot_box_with_check:')
+
 def setup(bot):
     bot.add_cog(Mod())
